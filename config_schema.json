@@ -1,0 +1,198 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Strava Running",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "title": "Enabled",
+      "default": false,
+      "description": "Enable the Strava plugin."
+    },
+    "display_duration": {
+      "type": "number",
+      "title": "Display Duration (seconds)",
+      "default": 10,
+      "minimum": 3,
+      "maximum": 300,
+      "description": "Seconds each view stays on screen per rotation. The run-cards view may stretch beyond this (see Dynamic Duration)."
+    },
+    "update_interval": {
+      "type": "integer",
+      "title": "Update Interval (seconds)",
+      "default": 600,
+      "minimum": 300,
+      "maximum": 3600,
+      "description": "How often to poll Strava. 10 minutes uses a tiny fraction of Strava's free rate limit."
+    },
+    "client_id": {
+      "type": "string",
+      "title": "Strava Client ID",
+      "default": "",
+      "x-secret": true,
+      "description": "From https://www.strava.com/settings/api. Set the app's Authorization Callback Domain to 'localhost'."
+    },
+    "client_secret": {
+      "type": "string",
+      "title": "Strava Client Secret",
+      "default": "",
+      "x-secret": true,
+      "description": "From https://www.strava.com/settings/api."
+    },
+    "athletes": {
+      "type": "array",
+      "title": "Athletes",
+      "x-widget": "array-table",
+      "x-columns": ["name", "strava_id", "shirt_color", "shorts_color", "accessory"],
+      "description": "One row per person. Connect each account with the 'Connect Strava' button above; the connection step prints the Strava ID. Leave strava_id blank to match by first name. Anyone connected but not listed here still appears with a default outfit.",
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "maxLength": 12,
+            "description": "Shown on the board (first 8 letters)."
+          },
+          "strava_id": {
+            "type": ["string", "null"],
+            "title": "Strava ID",
+            "description": "Numeric athlete id printed when the account was connected. Optional if the name matches the Strava first name."
+          },
+          "shirt_color": {
+            "type": "array",
+            "title": "Shirt",
+            "items": {"type": "integer", "minimum": 0, "maximum": 255},
+            "minItems": 3,
+            "maxItems": 3,
+            "default": [252, 76, 2],
+            "x-widget": "color-picker"
+          },
+          "shorts_color": {
+            "type": "array",
+            "title": "Shorts",
+            "items": {"type": "integer", "minimum": 0, "maximum": 255},
+            "minItems": 3,
+            "maxItems": 3,
+            "default": [30, 30, 40],
+            "x-widget": "color-picker"
+          },
+          "accessory": {
+            "type": "string",
+            "title": "Accessory",
+            "enum": ["none", "headband", "cap", "sunglasses"],
+            "default": "none"
+          }
+        },
+        "required": ["name"],
+        "additionalProperties": true
+      },
+      "default": [
+        {"name": "Bridger", "strava_id": null, "shirt_color": [252, 76, 2], "shorts_color": [30, 30, 40], "accessory": "headband"},
+        {"name": "Roommate", "strava_id": null, "shirt_color": [40, 140, 255], "shorts_color": [245, 245, 245], "accessory": "cap"}
+      ]
+    },
+    "units": {
+      "type": "string",
+      "title": "Units",
+      "enum": ["mi", "km"],
+      "default": "mi",
+      "x-widget": "radio"
+    },
+    "week_start": {
+      "type": "string",
+      "title": "Week starts on",
+      "enum": ["monday", "sunday"],
+      "default": "monday",
+      "x-widget": "radio",
+      "description": "Strava's own weekly totals start on Monday."
+    },
+    "sport_types": {
+      "type": "array",
+      "title": "Counted activity types",
+      "items": {"type": "string"},
+      "default": ["Run", "TrailRun", "VirtualRun"],
+      "description": "Strava sport_type values that count. Add 'Walk' or 'Hike' to include them.",
+      "x-advanced": true
+    },
+    "history_days": {
+      "type": "integer",
+      "title": "History window (days)",
+      "default": 90,
+      "minimum": 14,
+      "maximum": 400,
+      "description": "How far back to fetch for streaks and records. Leaderboard periods further back are fetched on demand.",
+      "x-advanced": true
+    },
+    "views": {
+      "type": "object",
+      "title": "Views",
+      "description": "Each enabled view is its own slot in the display rotation (restart the display after enabling/disabling a view).",
+      "properties": {
+        "leaderboard": {
+          "type": "object",
+          "title": "Leaderboard",
+          "properties": {
+            "enabled": {"type": "boolean", "title": "Enabled", "default": true},
+            "periods": {
+              "type": "array",
+              "title": "Periods",
+              "x-widget": "array-table",
+              "x-columns": ["period", "offset"],
+              "description": "Boards to page through within the slot. offset 0 = current, 1 = previous, etc.",
+              "maxItems": 6,
+              "items": {
+                "type": "object",
+                "properties": {
+                  "period": {"type": "string", "title": "Period", "enum": ["week", "month", "year"], "default": "week"},
+                  "offset": {"type": "integer", "title": "Offset", "minimum": 0, "maximum": 52, "default": 0}
+                },
+                "required": ["period"]
+              },
+              "default": [{"period": "week", "offset": 0}]
+            },
+            "seconds_per_page": {"type": "number", "title": "Seconds per board", "default": 5, "minimum": 2, "maximum": 60}
+          }
+        },
+        "runs": {
+          "type": "object",
+          "title": "Run cards",
+          "properties": {
+            "enabled": {"type": "boolean", "title": "Enabled", "default": true},
+            "period": {"type": "string", "title": "Period", "enum": ["week", "month"], "default": "week", "description": "Which runs to show cards for."},
+            "seconds_per_run": {"type": "number", "title": "Seconds per run", "default": 6, "minimum": 3, "maximum": 30},
+            "max_seconds": {"type": "number", "title": "Max seconds per rotation", "default": 60, "minimum": 10, "maximum": 300, "description": "Cap for the stretched slot when Dynamic Duration is on."},
+            "trace_route": {"type": "boolean", "title": "Animate route trace", "default": true}
+          }
+        },
+        "race": {
+          "type": "object",
+          "title": "Head-to-head race",
+          "properties": {
+            "enabled": {"type": "boolean", "title": "Enabled", "default": true},
+            "goal": {"type": "number", "title": "Goal distance", "default": 20, "minimum": 1, "maximum": 1000, "description": "Finish line, in the configured units."},
+            "period": {"type": "string", "title": "Period", "enum": ["week", "month"], "default": "week"}
+          }
+        },
+        "records": {
+          "type": "object",
+          "title": "Streaks & records",
+          "properties": {
+            "enabled": {"type": "boolean", "title": "Enabled", "default": true}
+          }
+        }
+      }
+    },
+    "dynamic_duration": {
+      "type": "object",
+      "title": "Dynamic Duration",
+      "description": "Lets the run-cards view stay up long enough to show every run.",
+      "properties": {
+        "enabled": {"type": "boolean", "title": "Enabled", "default": true},
+        "max_duration_seconds": {"type": "number", "title": "Max seconds", "default": 60, "minimum": 10, "maximum": 300}
+      }
+    }
+  },
+  "required": ["enabled"]
+}

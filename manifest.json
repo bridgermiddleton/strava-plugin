@@ -1,0 +1,69 @@
+{
+  "id": "strava",
+  "name": "Strava Running",
+  "version": "1.0.0",
+  "author": "Bridger Middleton",
+  "description": "Weekly running leaderboard, animated run cards with GPS route traces and pixel-art runners, a head-to-head race to a mileage goal, and streaks & records for a few Strava athletes.",
+  "entry_point": "manager.py",
+  "class_name": "StravaPlugin",
+  "category": "fitness",
+  "tags": [
+    "strava",
+    "running",
+    "fitness",
+    "leaderboard",
+    "gps"
+  ],
+  "icon": "fab fa-strava",
+  "display_modes": [
+    "strava_leaderboard",
+    "strava_runs",
+    "strava_race",
+    "strava_records"
+  ],
+  "update_interval": 600,
+  "default_duration": 10,
+  "config_schema": "config_schema.json",
+  "requirements_file": "requirements.txt",
+  "compatible_versions": [
+    ">=2.0.0"
+  ],
+  "versions": [
+    {
+      "version": "1.0.0",
+      "released": "2026-10-25",
+      "ledmatrix_min_version": "3.8.0",
+      "notes": "Initial release: leaderboard, run cards, race, records."
+    }
+  ],
+  "api_requirements": [
+    {
+      "name": "Strava API",
+      "required": true,
+      "description": "A Strava API application (client ID + secret) and one OAuth connection per athlete",
+      "url": "https://www.strava.com/settings/api",
+      "rate_limit": "100 reads / 15 min, 1000 / day"
+    }
+  ],
+  "web_ui_actions": [
+    {
+      "id": "connect-strava",
+      "type": "script",
+      "title": "Connect a Strava account",
+      "description": "Generates a Strava authorization link. Open it (or send it to the athlete), approve, then paste the full URL of the page you land on (it starts with http://localhost/exchange_token).",
+      "button_text": "Connect Strava",
+      "icon": "fab fa-strava",
+      "color": "orange",
+      "script": "authenticate_strava.py",
+      "oauth_flow": true,
+      "step1_message": "Open the link below, approve access, then copy the URL of the page you land on (it will fail to load, that is expected).",
+      "step2_prompt": "Paste the full URL you were redirected to (http://localhost/exchange_token?...):",
+      "step2_button_text": "Complete connection",
+      "success_message": "Strava account connected. Add the athlete to the Athletes table (or leave it blank to use their Strava first name), then save.",
+      "error_message": "Could not complete the Strava connection. Check the client ID/secret and that you pasted the full redirect URL."
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/bridgermiddleton/strava-plugin",
+  "last_updated": "2026-10-25"
+}

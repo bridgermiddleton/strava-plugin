@@ -1,0 +1,11 @@
+# OAuth tokens written by authenticate_strava.py / the plugin (never commit)
+token.json
+.pkce_code_verifier
+
+# local dev
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+preview_out/
+.DS_Store

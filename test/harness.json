@@ -1,0 +1,33 @@
+{
+ "_comment": "Deterministic settings for LEDMatrix's scripts/check_plugin.py: fixture activities served from the cache, clock frozen to the fixture's Sunday afternoon, update() skipped so no network is needed.",
+ "config": {
+  "enabled": true,
+  "client_id": "harness",
+  "client_secret": "harness",
+  "athletes": [
+   {
+    "name": "Bridger",
+    "strava_id": "1001",
+    "accessory": "headband"
+   },
+   {
+    "name": "Roommate",
+    "strava_id": "2002",
+    "shirt_color": [
+     40,
+     140,
+     255
+    ],
+    "shorts_color": [
+     245,
+     245,
+     245
+    ],
+    "accessory": "cap"
+   }
+  ]
+ },
+ "mock_data": "test/fixtures/mock_cache.json",
+ "freeze_time": "2026-10-25 14:00:00",
+ "skip_update": true
+}

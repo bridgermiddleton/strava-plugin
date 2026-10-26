@@ -1,0 +1,261 @@
+{
+ "now": "2026-10-25T14:00:00",
+ "athletes": {
+  "1001": {
+   "athlete": {
+    "id": 1001,
+    "firstname": "Bridger",
+    "lastname": "M"
+   }
+  },
+  "2002": {
+   "athlete": {
+    "id": 2002,
+    "firstname": "Roommate",
+    "lastname": "R"
+   }
+  }
+ },
+ "activities": [
+  {
+   "id": 1,
+   "name": "Sunday long run",
+   "athlete": {
+    "id": 1001
+   },
+   "distance": 14645.0,
+   "moving_time": 4732,
+   "elapsed_time": 4968,
+   "total_elevation_gain": 111.9,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-25T08:00:00Z",
+   "start_date": "2026-10-25T08:00:00Z",
+   "map": {
+    "id": "a1",
+    "summary_polyline": "_mpaG~qopL_Qs\\qPjDmKfYuNnEcIlSqIzNgFlRzIhf@j@lS_Qz@`GhU}IvHpMlReQzHmNvMbCjOoYjWoCnVpQrKXdU}Dl^hAl[fWTnQvBdMxGvT{M~LEfLi@|KgFpJyPtHiEfHyBzJrF~HeCtHwD|Y~XrK}GbRkAbFsQl_@z@xGiTaJo]nFcSpFiTaF_ViCkTsXmMyAuPwOwHuRkB}AkMu@iPgFaKcJuDkCwR}Ka@}DyXuFed@uNw@uNw@"
+   },
+   "average_speed": 3.095
+  },
+  {
+   "id": 2,
+   "name": "Easy shakeout",
+   "athlete": {
+    "id": 1001
+   },
+   "distance": 5149.9,
+   "moving_time": 1744,
+   "elapsed_time": 1831,
+   "total_elevation_gain": 39.4,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-24T07:00:00Z",
+   "start_date": "2026-10-24T07:00:00Z",
+   "map": {
+    "id": "a2",
+    "summary_polyline": "_mpaGzzupLyCoA{CCyCgAyCyB{Ci@yC]yCF{C]yCHyCZ{ChAyC^yC`A{Cl@yCv@yCrA{ClByCrAyCpA{CjAyCl@yCA{CZyCCyCw@{C?yCo@yC]{Cq@yCaBxC`BzCp@xC\\xCn@zC?xCv@xCBzC[xC@xCm@zCkAxCqAxCsAzCmBxCsAxCw@zCm@xCaAxC_@zCiAxC[xCIzC\\xCGxC\\zCh@xCxBxCfAzCBxCnA"
+   },
+   "average_speed": 2.953
+  },
+  {
+   "id": 3,
+   "name": "Tempo",
+   "athlete": {
+    "id": 1001
+   },
+   "distance": 8046.7,
+   "moving_time": 2160,
+   "elapsed_time": 2268,
+   "total_elevation_gain": 61.5,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-23T18:00:00Z",
+   "start_date": "2026-10-23T18:00:00Z",
+   "map": {
+    "id": "a3",
+    "summary_polyline": "_mpaG`|rpLiFdAqD|J{DvBwCtEObNyBlCaLqHYpIcFxAsP}B{@vI}KnDs@zJ}E`JzCvKkE~K?fLnIhHnClInHdE`OiARdJrHGhHuAlFmAO~P~E{@dCdJxDvIfFpCnG`J|FwCdJlI|F{EpKrC|FmG_@uT|BwIlAoJ`HkDiGqPBcIgFqJT{FcB}FUkFdCwGt@iHbEcLm@iIjB{NeA{KaAaNgGuEyIK{ByPmHkCmIbAiIvIoGzB"
+   },
+   "average_speed": 3.725
+  },
+  {
+   "id": 4,
+   "name": "Lunch jog",
+   "athlete": {
+    "id": 1001
+   },
+   "distance": 7081.1,
+   "moving_time": 2332,
+   "elapsed_time": 2448,
+   "total_elevation_gain": 54.1,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-20T12:00:00Z",
+   "start_date": "2026-10-20T12:00:00Z",
+   "map": {
+    "id": "a4",
+    "summary_polyline": "_mpaGzzspLqCdEaDkA{BbDqCh@{F{D{IyFiFfAgGnAwArHsIxA_B|HuA~H[rIUlIgEjIzDlIdEzGrEhFrLr@lC|Ct@|EdBtDnA~E|A`FfGyB@lO~BfI|DbEzE`A`FvIrFsB~HdMdGuCvDqJ`CmKjGu@?yN`CoFDcJsBqK_@qGzA{DKeFYyEhDmEhIuGyDeFdBwHrGuM_C{GPgL{C_HeF}DmA{L_MfHcFuA_HbEaE{AiFzIoDjB"
+   },
+   "average_speed": 3.036
+  },
+  {
+   "id": 5,
+   "name": "Treadmill intervals",
+   "athlete": {
+    "id": 2002
+   },
+   "distance": 6437.4,
+   "moving_time": 1860,
+   "elapsed_time": 1953,
+   "total_elevation_gain": 49.2,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-24T19:00:00Z",
+   "start_date": "2026-10-24T19:00:00Z",
+   "map": {
+    "id": "a5",
+    "summary_polyline": null
+   },
+   "average_speed": 3.461
+  },
+  {
+   "id": 6,
+   "name": "Morning 10k",
+   "athlete": {
+    "id": 2002
+   },
+   "distance": 9977.9,
+   "moving_time": 3100,
+   "elapsed_time": 3255,
+   "total_elevation_gain": 76.3,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-22T06:00:00Z",
+   "start_date": "2026-10-22T06:00:00Z",
+   "map": {
+    "id": "a6",
+    "summary_polyline": "okraGx_xpL_IkHcI^mIXuHzCsO_JoGpJsJ~D[zSqG|HbF~UuEdIfCzNdH`Nh@vI@bI|HtGqExIsDxK`FtFkI|Rd@jMa@bRpHhF|FlH^`YlItGzL_C`LwGrIeAbIvAzGiQxHrCdDqRxAkQtGx@pAeK~KxDxF}CrBgIzJiBhJoEzJuGvJmJgIkPnHaMnCaOiGaMg@iN{OuEfAgPsOq@kO~AcBeJ{KbDoGTaCgHaGzAiDmGcDcWuGcD"
+   },
+   "average_speed": 3.219
+  },
+  {
+   "id": 7,
+   "name": "River loop",
+   "athlete": {
+    "id": 2002
+   },
+   "distance": 12070.1,
+   "moving_time": 3615,
+   "elapsed_time": 3795,
+   "total_elevation_gain": 92.2,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-21T17:00:00Z",
+   "start_date": "2026-10-21T17:00:00Z",
+   "map": {
+    "id": "a7",
+    "summary_polyline": "okraGdrvpL}Kk@uNwNgIlSqNoBkGdQiBbWmIbGjDh[qEfInFrTT|KuEjGcItGrJfMaFrIuMvL{KtPrAnNHfPqJ~ZrRnCkFd_@jQlAtL|DpLvBdKxCnI`IzO}WdIxAjIiFrGwNrG_@|CiPxFe@tIfC~O`KrHkEzJsCjQQrIkJzFsM|P_JjAuRqHeTjBaQgGkPgAaPkM{JkS{CjA_PgXbFqAmJm@yMoLjCYuRmHs@s@{^oGyPsJaGqKmR"
+   },
+   "average_speed": 3.339
+  },
+  {
+   "id": 8,
+   "name": "Last week long",
+   "athlete": {
+    "id": 1001
+   },
+   "distance": 17702.8,
+   "moving_time": 5885,
+   "elapsed_time": 6179,
+   "total_elevation_gain": 135.3,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-17T08:00:00Z",
+   "start_date": "2026-10-17T08:00:00Z",
+   "map": {
+    "id": "a8",
+    "summary_polyline": "_mpaG|{mpLyTaXsMfp@iSkCcDdo@qIfQwR}@vIjp@uLlEQzTmEfMeIbKiAfPy_@~FdHvUwPtReCvU{MrZmEl\\yI`c@fWlNzSlL|LrPhCj^|f@}ZrIxPpUaMvLnDlPiQnJhKbLqFjLrIjOfPjMoD`L_IbQrArc@~^pKkThKmSra@z@bA}_@nIwWhDsZyUkb@uEcX~CwUcc@iQnF{S}]cFlHyUwD_OdAeWgEqQ_JiLgIwM_FwVsCkf@kMgTgSv@mNyk@_UfN"
+   },
+   "average_speed": 3.008
+  },
+  {
+   "id": 9,
+   "name": "Last week run",
+   "athlete": {
+    "id": 2002
+   },
+   "distance": 8851.4,
+   "moving_time": 2695,
+   "elapsed_time": 2829,
+   "total_elevation_gain": 67.7,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-16T07:00:00Z",
+   "start_date": "2026-10-16T07:00:00Z",
+   "map": {
+    "id": "a9",
+    "summary_polyline": "_mpaGjfrpLiGrIcEzMyGyCBtYoFs@cGIbBrQeJmBaG`BMtIkLz@sLdDcChJqI`J`DxLmAlLxBrKk@jMb@hMxLlDnFbGzMw@nDfFxM}HhD`CrBdHvDpC~Ec@lEQdEhJpFhE`HbGlKhNfFwIlN~I~HiEKyU|GoEpCaKsDqRbC{HjC_IwNkOxBmGqIkHhDsGdC_IeIkDm@_GvAuJ`FeQuEuE_@mMA{RcBcRiKb@wHcCmHwDqJtM_HaC"
+   },
+   "average_speed": 3.284
+  },
+  {
+   "id": 10,
+   "name": "Longest of month",
+   "athlete": {
+    "id": 2002
+   },
+   "distance": 19794.9,
+   "moving_time": 6273,
+   "elapsed_time": 6586,
+   "total_elevation_gain": 151.3,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-10-12T08:00:00Z",
+   "start_date": "2026-10-12T08:00:00Z",
+   "map": {
+    "id": "a10",
+    "summary_polyline": "_mpaGbiopLuMzTeMhDaHvXiTeUqOjAgNbG}GjRs]}GePxLaR~Mih@|CuOpYxV`h@u]zWlL|_@fQl[lQxVvCnXtYvKvJtPbQbI|[}EaC`_@hErUtIvP~N|DpPwAbKlTjMf[jQfx@lTeQ`VrFj[bS`Mif@fTsIdJg^Ikj@vOmLhGwV}Tgm@OeUvCwPiKwUpRyLxP_RvA}TzCyVjRw_@iPsQlN{g@yG_ZqAkc@cYwF}Bwi@ab@bPmToCqNsVmUzBqVxe@cPzO"
+   },
+   "average_speed": 3.156
+  },
+  {
+   "id": 11,
+   "name": "Bike commute",
+   "athlete": {
+    "id": 1001
+   },
+   "distance": 9656.1,
+   "moving_time": 1440,
+   "elapsed_time": 1512,
+   "total_elevation_gain": 73.8,
+   "sport_type": "Ride",
+   "type": "Ride",
+   "start_date_local": "2026-10-24T09:00:00Z",
+   "start_date": "2026-10-24T09:00:00Z",
+   "map": {
+    "id": "a11",
+    "summary_polyline": "_mpaGfespL_FmB{G_JwExE}HsCoJiCqFbF_N}BmKxBwJ`FdBxScFjJpApOaI`JhExNlPrLcHlKrFpIzJ|E`ElF~IpAlCzDaDdPhFtBP~MvArMlE~GbCvT`HjHrHvNxJkDlJPdIwHzHkE`E_PvBmPrIAbB}LP_NRoKyAqLpA_GfEkEvAuG`RwEZ}JxLaMoBiLhJoReBmNePaDsByL?mRqOj@kEyJiPxJ{KvH}DiGcGB{GhMoEdD"
+   },
+   "average_speed": 6.706
+  },
+  {
+   "id": 12,
+   "name": "September run",
+   "athlete": {
+    "id": 1001
+   },
+   "distance": 9656.1,
+   "moving_time": 3060,
+   "elapsed_time": 3213,
+   "total_elevation_gain": 73.8,
+   "sport_type": "Run",
+   "type": "Run",
+   "start_date_local": "2026-09-15T08:00:00Z",
+   "start_date": "2026-09-15T08:00:00Z",
+   "map": {
+    "id": "a12",
+    "summary_polyline": "_mpaGdwrpLwGaKcIgFmGnEaI@}LwEqH|EaNWwDpMgB`O]jOU~MjJ`RUfJhHjKwGlHtPdGiJrJvKzCqIpNhCpG{@lMkDtT`Kt@bBzMo@v\\dKx@pK_BhFhUhKaBrJqXnHy@zEoP|EmFbFmCXkRhHjAiAaQzEoAxN|ClAkIlHuDjKmExE}IvDqKa@}LbMwNzA}OkCkNmKiI_MkEmIoEuE{GcJ}@yNtH}EgAeEqBqDuDeDcJsF^iFrB"
+   },
+   "average_speed": 3.156
+  }
+ ]
+}
