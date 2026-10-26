@@ -187,3 +187,30 @@ def test_other_panel_sizes(tmp_path):
         for mode in M.ALL_MODES:
             plugin.display(force_clear=True, display_mode=mode)
             assert disp.image.size == size
+
+
+def test_fast_polling_until_first_fetch_and_token_recheck(tmp_path):
+    plugin, disp = make_plugin(tmp_path, connected=False)
+    assert plugin.get_update_interval() == M.UNCONNECTED_POLL_S
+    plugin.display(force_clear=True, display_mode=M.MODE_LEADERBOARD)
+    assert not plugin._any_connected()
+    # the web-UI action writes token.json while the display is running
+    store = plugin.token_store
+    for aid in ("1001", "2002"):
+        store.upsert({"refresh_token": "r", "access_token": f"tok-{aid}", "expires_at": time.time() + 9999,
+                      "athlete": {"id": int(aid), "firstname": "X"}})
+    plugin._last_token_check -= M.TOKEN_RECHECK_S + 1
+    plugin._last_render = 0
+    plugin.display(display_mode=M.MODE_LEADERBOARD)
+    assert plugin._any_connected()
+    assert plugin.get_update_interval() == M.FIRST_FETCH_RETRY_S
+    plugin.update()
+    assert plugin.get_update_interval() == plugin.update_interval_s
+
+
+def test_loading_screen_before_first_fetch(tmp_path):
+    plugin, disp = make_plugin(tmp_path)
+    img = plugin._render(M.MODE_LEADERBOARD, 128, 32, 0.0)
+    loading = img.tobytes()
+    plugin.update()
+    assert plugin._render(M.MODE_LEADERBOARD, 128, 32, 0.0).tobytes() != loading

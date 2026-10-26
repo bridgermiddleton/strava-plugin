@@ -69,6 +69,12 @@ ALL_MODES = list(MODE_VIEW_KEY)
 NEW_SLOT_GAP_S = 2.5
 CACHE_TTL_S = 7 * 24 * 3600          # Strava's terms: cache no longer than 7 days
 RENDER_FPS = 15.0
+#: Poll cadence while nobody is connected yet (token.json just reads, no network).
+UNCONNECTED_POLL_S = 15.0
+#: Retry cadence while connected but no fetch has succeeded yet.
+FIRST_FETCH_RETRY_S = 60.0
+#: How often display() re-reads token.json while waiting for a connection.
+TOKEN_RECHECK_S = 5.0
 
 
 def _num(value: Any, default: float, lo: Optional[float] = None, hi: Optional[float] = None) -> float:
@@ -100,6 +106,7 @@ class StravaPlugin(BasePlugin):
         self._status: Optional[str] = None       # short error/status for the panel
         self._last_update_ok: Optional[float] = None
         self._fetched_window: Optional[Tuple[datetime, datetime]] = None
+        self._last_token_check: float = 0.0
         # per-slot animation state
         self._slot_mode: Optional[str] = None
         self._slot_start: float = 0.0
@@ -177,7 +184,31 @@ class StravaPlugin(BasePlugin):
         return True
 
     def get_update_interval(self) -> float:
-        return self.update_interval_s
+        """Configured cadence once data has loaded; quick retries before that so
+        a freshly connected athlete shows up within seconds, not 10 minutes."""
+        if self._last_update_ok is not None:
+            return self.update_interval_s
+        if not self._any_connected():
+            return UNCONNECTED_POLL_S
+        return FIRST_FETCH_RETRY_S
+
+    def _any_connected(self) -> bool:
+        with self._data_lock:
+            return any(a.connected for a in self._athletes)
+
+    def _recheck_tokens(self, now_mono: float) -> None:
+        """Cheap re-read of token.json so the 'connect' screen clears as soon
+        as the web-UI action has written it (update() may be minutes away)."""
+        if now_mono - self._last_token_check < TOKEN_RECHECK_S:
+            return
+        self._last_token_check = now_mono
+        try:
+            athletes = D.resolve_athletes(self.config_athletes, self.token_store.load())
+        except Exception as exc:  # pragma: no cover
+            self.logger.debug("token recheck failed: %s", exc)
+            return
+        with self._data_lock:
+            self._athletes = athletes
 
     def get_display_duration(self) -> float:
         return float(self.display_duration)
@@ -375,6 +406,8 @@ class StravaPlugin(BasePlugin):
         if self._last_render and now - self._last_render < self._min_frame_interval:
             return True
         self._last_render = now
+        if self._last_update_ok is None and not self._any_connected():
+            self._recheck_tokens(now)
         t = now - self._slot_start
         w, h = self._size()
         try:
@@ -395,6 +428,8 @@ class StravaPlugin(BasePlugin):
                 return R.render_message(w, h, ["CONNECT STRAVA", "IN WEB UI"], R.GREY)
             if self._status:
                 return R.render_message(w, h, ["STRAVA", self._status], R.GREY)
+            if self._last_update_ok is None:
+                return R.render_message(w, h, ["LOADING RUNS", "FROM STRAVA..."], R.GREY)
         if mode == MODE_RUNS:
             return self._render_runs(w, h, t, runs, athletes, now)
         if mode == MODE_RACE:
